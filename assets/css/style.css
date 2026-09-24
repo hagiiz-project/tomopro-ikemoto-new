@@ -17,7 +17,7 @@
 }
 
 :root {
-  --build: "2026-09-25b";   /* 更新の確認用（触らない） */
+  --build: "2026-09-25c";   /* 更新の確認用（触らない） */
   color-scheme: light;
 
   --rose: #E24F93;
@@ -1655,3 +1655,136 @@ mark.todo {
 .flow > .scene--win:first-child { margin-top: 0; }
 .items--cards .item { border-top-width: 10px; border-top-color: var(--accent); }
 .closing-t { word-break: auto-phrase; text-wrap: balance; }
+
+/* =========================================================
+   読みやすさの修正（物語ページ）
+   ========================================================= */
+
+/* ④⑦ 見出し・締めの一文は、本文と同じゴシック（Noto Sans JP 900）に。
+   見出しはテーマ色（防災＝紫、科学＝緑、土木＝茶）で本文と区別する */
+.scene-title,
+.closing-t,
+.scene--cta .claim,
+.scene--copy .claim,
+.tldr-h,
+.mini-title,
+.mid-claim {
+  font-family: var(--f-claim) !important;
+  font-weight: 900 !important;
+  letter-spacing: .02em;
+}
+.scene-title {
+  color: var(--accent-ink);
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.45;
+  padding-left: 16px;
+  border-left: 8px solid var(--accent);
+}
+.scene--copy .claim { font-size: clamp(24px, 2.8vw, 34px); line-height: 1.6; }
+.scene--cta .claim { font-size: clamp(24px, 2.8vw, 34px); line-height: 1.6; color: var(--accent-ink); }
+.closing-t {
+  text-shadow: none !important;
+  font-size: clamp(26px, 3.4vw, 42px);
+  line-height: 1.5;
+}
+.tldr-h { font-size: 14px; color: var(--accent-ink); }
+
+/* ② 「達成したら、こうなる」：絵の上に、暗い板を敷いて文字をはっきり読ませる */
+.scene--win .scene-text {
+  position: relative;
+  z-index: 1;
+  max-width: 880px !important;
+  padding: clamp(24px, 3.5vw, 40px) clamp(20px, 4vw, 48px);
+  background: rgba(18, 10, 28, .82);
+  border: 3px solid rgba(255, 255, 255, .9);
+  border-radius: var(--radius);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, .35);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+.scene--win .claim { color: #FFFFFF !important; text-shadow: none !important; }
+.scene--win .claim .hl { background-image: none !important; }
+
+/* ③ 「いちばん伝えたいこと」をひとつの帯にまとめ、その後に「ここから物語」の区切り */
+.flow > .scene--cta {
+  max-width: none;
+  margin-top: 0;
+  padding: clamp(56px, 7vw, 88px) var(--pad-x);
+  background: var(--paper-2);
+  border-bottom: var(--line);
+  display: block;
+}
+.flow > .scene--cta .scene-fig { max-width: 760px; margin: 0 auto 32px; }
+.chapter-break {
+  text-align: center;
+  padding: clamp(48px, 6vw, 72px) var(--pad-x) clamp(8px, 2vw, 16px);
+}
+.chapter-no {
+  display: inline-block;
+  font-family: var(--f-claim);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .2em;
+  padding: 5px 16px;
+  color: var(--on-accent);
+  background: var(--accent);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+}
+.chapter-t {
+  margin: 14px 0 6px;
+  font-family: var(--f-claim);
+  font-weight: 900;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.4;
+}
+.chapter-d { margin: 0; color: var(--ink-2); font-size: 16px; }
+.chapter-break + .scene { padding-top: clamp(32px, 5vw, 56px); }
+
+/* ①⑤⑥ 写真の枠：写真がまだ無いあいだも、置き場所として見えるようにする */
+.img-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--accent-ink);
+  font-family: var(--f-claim);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: .2em;
+  opacity: .55;
+  pointer-events: none;
+}
+.img-slot.has-img .img-ph { display: none; }
+.img-slot:not(.has-img) {
+  background-color: var(--paper-2);
+  background-image: repeating-linear-gradient(-45deg, transparent 0 14px, rgba(42, 20, 34, .04) 14px 28px);
+}
+.is-draft .img-ph { top: -20%; }
+
+/* ⑤ 実績：右半分は常に写真の枠 */
+.items--rows .item--row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.item--row .item-fig { min-height: 240px; }
+
+/* ⑥ 今回の4つ：説明の下に写真 */
+.items--cards .item--card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.item--card .item-body { padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.item-fig--card { margin: 0; border-top: var(--line); }
+.item-fig--card .img-slot { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
+@media (max-width: 759px) {
+  .items--rows .item--row { grid-template-columns: 1fr; }
+  .item--row .item-fig { min-height: 0; }
+}
+.item-fig--card { min-height: 0 !important; border-left: 0 !important; }
+.item-fig--card .img-slot { min-height: 0 !important; }
+/* 中央ぞろえの見出しは、左の線ではなく下線で */
+.scene--cta .scene-title {
+  border-left: 0;
+  padding-left: 0;
+  display: inline-block;
+  border-bottom: 6px solid var(--accent);
+  padding-bottom: 6px;
+}

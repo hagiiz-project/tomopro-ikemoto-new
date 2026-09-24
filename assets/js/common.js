@@ -65,6 +65,12 @@
     el.className = "img-slot";
     el.setAttribute("data-img", key);
     if (alt) el.setAttribute("data-alt", alt);
+    // 写真がまだ無いあいだの目印（写真が入ると自動で消えます）
+    var ph = document.createElement("span");
+    ph.className = "img-ph";
+    ph.setAttribute("aria-hidden", "true");
+    ph.innerHTML = '<svg viewBox="0 0 24 24" width="30" height="30"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>PHOTO</span>';
+    el.appendChild(ph);
     if (DRAFT) {
       var label = document.createElement("span");
       label.className = "img-label";
@@ -96,8 +102,8 @@
         img.src = slot.getAttribute("data-fallback");
       } else {
         slot.classList.add("is-empty");
-        // 公開時は、画像の無い枠ごと畳む
-        if (!DRAFT) {
+        // HIDE_EMPTY_PHOTOS: true のときだけ、写真の無い枠ごと畳む
+        if (!DRAFT && SITE.HIDE_EMPTY_PHOTOS) {
           var box = slot.closest("[data-hide-empty]");
           if (box) box.classList.add("is-gone");
         }
@@ -474,7 +480,7 @@
   loadProgress();
 
   window.HZ = {
-    BUILD: "2026-09-25b",
+    BUILD: "2026-09-25c",
     DRAFT: DRAFT,
     REDUCE: REDUCE,
     fmt: fmt,

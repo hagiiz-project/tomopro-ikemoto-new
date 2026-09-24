@@ -126,3 +126,91 @@
 - 写真が無い項目は、説明だけの横長の箱になります（空の枠は出ません）。
 - 「今回の挑戦」の場面（科学 13〜15、防災 14〜16、土木 16〜18）には写真を出しません。置いても表示されません。
 - 置き場所を画面で確認したいときは、URLの末尾に `?draft=1` を付けてください。
+
+## 写真の置き場所 一覧（最新版）
+
+写真がまだ無い枠は「PHOTO」と表示されます。ファイルを置くと、その枠に自動で入ります。どの枠がどのファイル名かは、URLの末尾に `?draft=1` を付けると画面上に表示されます。
+
+### 科学（science.html）
+
+| 場所 | ファイル名 |
+|---|---|
+| 表紙 | `images/science/01.jpg` |
+| 場面 02 | `images/science/02.jpg` |
+| 「この文章の出発点」 | `images/science/03.jpg` |
+| 「私の原体験」 | `images/science/04.jpg` |
+| 場面 05 | `images/science/05.jpg` |
+| 「枠の外にあるものは、測られない」 | `images/science/06.jpg` |
+| 場面 07 | `images/science/07.jpg` |
+| 場面 08 | `images/science/08.jpg` |
+| 「世の中は、いろんなガリ勉（好奇心）でできている」 | `images/science/09.jpg` |
+| 場面 10 | `images/science/10.jpg` |
+| 実績「「東北大生が解説しますっ」（note・Instagram）」の右半分 | `images/science/works-1.jpg` |
+| 実績「手作り巨大洪水流域模型（サイエンス・デイ出展）」の右半分 | `images/science/works-2.jpg` |
+| 実績「教材プラットフォーム「プリズム(Prism)」」の右半分 | `images/science/works-3.jpg` |
+| 実績「Tohoku TikTokとの高校出前授業」の右半分 | `images/science/works-4.jpg` |
+| 実績「防災科学技術研究所との連携と、査読あり論文・学会発表10件」の右半分 | `images/science/works-5.jpg` |
+| 今回の挑戦「科学思考をバグらせるボードゲーム（はなってバリア）」の下 | `images/science/plan-1.jpg` |
+| 今回の挑戦「高校への出前授業」の下 | `images/science/plan-2.jpg` |
+| 今回の挑戦「探究の失敗を疑似体験する「脱出ゲーム」教材」の下 | `images/science/plan-3.jpg` |
+| 今回の挑戦「宿での「サイエンスカフェ」全国展開」の下 | `images/science/plan-4.jpg` |
+| 「いちばん伝えたいこと」 | `images/science/18.jpg` |
+| 「達成したら、こうなる」の背景（任意。無ければイラスト） | `images/science/win.jpg` |
+
+### 防災（bosai.html）
+
+| 場所 | ファイル名 |
+|---|---|
+| 表紙 | `images/bosai/01.jpg` |
+| 場面 02 | `images/bosai/02.jpg` |
+| 「はじめに」 | `images/bosai/03.jpg` |
+| 「研究が社会に届かなかった」 | `images/bosai/04.jpg` |
+| 場面 05 | `images/bosai/05.jpg` |
+| 場面 06 | `images/bosai/06.jpg` |
+| 「この壁は、私たちだけのものではないはず」 | `images/bosai/07.jpg` |
+| 場面 08 | `images/bosai/08.jpg` |
+| 「私たちが見つけた、ひとつの鍵」 | `images/bosai/09.jpg` |
+| 場面 10 | `images/bosai/10.jpg` |
+| 場面 11 | `images/bosai/11.jpg` |
+| 実績「防災科学技術研究所との連携（一般公開へ2年連続出展）」の右半分 | `images/bosai/works-1.jpg` |
+| 実績「査読あり論文の執筆と、学会発表10件」の右半分 | `images/bosai/works-2.jpg` |
+| 実績「手作り巨大洪水流域模型」の右半分 | `images/bosai/works-3.jpg` |
+| 実績「「ぼうさい女子会」の社会インフラ化」の右半分 | `images/bosai/works-4.jpg` |
+| 実績「「U35防災ゼミ」の企画・運営」の右半分 | `images/bosai/works-5.jpg` |
+| 実績「教材プラットフォーム「プリズム(Prism)」」の右半分 | `images/bosai/works-6.jpg` |
+| 今回の挑戦「高校への出前授業」の下 | `images/bosai/plan-1.jpg` |
+| 今回の挑戦「科学思考をバグらせるボードゲーム（はなってバリア等）」の下 | `images/bosai/plan-2.jpg` |
+| 今回の挑戦「探究の失敗を疑似体験する「脱出ゲーム」教材」の下 | `images/bosai/plan-3.jpg` |
+| 今回の挑戦「宿でのサイエンスカフェ全国展開」の下 | `images/bosai/plan-4.jpg` |
+| 「いちばん伝えたいこと」 | `images/bosai/19.jpg` |
+| 「達成したら、こうなる」の背景（任意。無ければイラスト） | `images/bosai/win.jpg` |
+
+### 土木（doboku.html）
+
+| 場所 | ファイル名 |
+|---|---|
+| 表紙 | `images/doboku/01.jpg` |
+| 場面 02 | `images/doboku/02.jpg` |
+| 「原体験」 | `images/doboku/03.jpg` |
+| 場面 04 | `images/doboku/04.jpg` |
+| 「壊れた瞬間だけ思い出される（僕の所感）」 | `images/doboku/05.jpg` |
+| 場面 06 | `images/doboku/06.jpg` |
+| 「私たちが本当に悔しいのは、批判ではない」 | `images/doboku/07.jpg` |
+| 場面 08 | `images/doboku/08.jpg` |
+| 「科学に限界があることを、誰も市民に伝えてこなかった」 | `images/doboku/09.jpg` |
+| 場面 10 | `images/doboku/10.jpg` |
+| 場面 11 | `images/doboku/11.jpg` |
+| 「担い手不足は、待遇の問題だけではない」 | `images/doboku/12.jpg` |
+| 場面 13 | `images/doboku/13.jpg` |
+| 実績「防災科学技術研究所との連携（一般公開へ2年連続出展）」の右半分 | `images/doboku/works-1.jpg` |
+| 実績「査読あり論文の執筆と、学会発表10件」の右半分 | `images/doboku/works-2.jpg` |
+| 実績「手作り巨大洪水流域模型」の右半分 | `images/doboku/works-3.jpg` |
+| 実績「高校への出前授業」の右半分 | `images/doboku/works-4.jpg` |
+| 実績「地域防災計画のテキスト・データ解析」の右半分 | `images/doboku/works-5.jpg` |
+| 今回の挑戦「高校への出前授業」の下 | `images/doboku/plan-1.jpg` |
+| 今回の挑戦「科学思考をバグらせるボードゲーム（はなってバリア等）」の下 | `images/doboku/plan-2.jpg` |
+| 今回の挑戦「探究の失敗を疑似体験する「脱出ゲーム」教材」の下 | `images/doboku/plan-3.jpg` |
+| 今回の挑戦「宿での「サイエンスカフェ」全国展開」の下 | `images/doboku/plan-4.jpg` |
+| 「記録されなかった時間に、名前を刻みます」 | `images/doboku/20.jpg` |
+| 「いちばん伝えたいこと」 | `images/doboku/22.jpg` |
+| 「達成したら、こうなる」の背景（任意。無ければイラスト） | `images/doboku/win.jpg` |

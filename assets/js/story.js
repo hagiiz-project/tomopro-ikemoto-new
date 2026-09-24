@@ -79,6 +79,12 @@
           '<figure class="item-fig" data-hide-empty data-work="' + HZ.escapeHTML(key) + '" data-alt="' +
           HZ.escapeHTML(String(it.title).replace(/\*\*/g, "")) + '"></figure></li>';
       }
+      if (layout === "cards") {
+        var pkey = it.img || ("plan-" + (i + 1));
+        return '<li class="item item--card"><div class="item-body">' + body + "</div>" +
+          '<figure class="item-fig item-fig--card" data-hide-empty data-work="' + HZ.escapeHTML(pkey) + '" data-alt="' +
+          HZ.escapeHTML(String(it.title).replace(/\*\*/g, "")) + '"></figure></li>';
+      }
       return '<li class="item">' + body + "</li>";
     }).join("") + "</ul>";
   }
@@ -276,7 +282,18 @@
 
     var flow = document.createElement("div");
     flow.className = "flow";
-    sceneEls.forEach(function (el) { flow.appendChild(el); });
+    sceneEls.forEach(function (el) {
+      flow.appendChild(el);
+      // 「いちばん伝えたいこと」の後に、ここから本文が始まる区切りを入れる
+      if (el.classList.contains("scene--cta")) {
+        var brk = document.createElement("div");
+        brk.className = "chapter-break";
+        brk.innerHTML = '<span class="chapter-no">STORY</span>' +
+          '<p class="chapter-t">ここから、物語です。</p>' +
+          '<p class="chapter-d">なぜ、この挑戦をするのか。代表の' + HZ.escapeHTML(SITE.REP_NAME || "") + 'が、自分の言葉で書きました。</p>';
+        flow.appendChild(brk);
+      }
+    });
     frag.appendChild(flow);
 
     // 読み終えた人へ：もう一度だけ、応援の入口

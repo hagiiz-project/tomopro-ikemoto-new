@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>雨を降らせると、他人事が自分事になる。｜HagiiZ</title>
+<meta name="description" content="大事なことほど、関心がある人にしか届かない。だから東北大学の学生33人のチーム HagiiZ は、関心がなくても始まる「遊び」をつくります。">
+<meta name="theme-color" content="#E24F93">
+
+<!-- SNSで共有したときの表示（公開URLが決まったら https://〜 の部分を書き換えてください） -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="雨を降らせると、他人事が自分事になる。｜HagiiZ">
+<meta property="og:description" content="大事なことほど、関心がある人にしか届かない。だから、関心がなくても始まる「遊び」をつくる。">
+<meta property="og:image" content="https://USERNAME.github.io/REPOSITORY/images/ogp/top.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=2026-09-25b">
+</head>
+<body class="top">
+
+<header class="head">
+  <a class="logo" href="index.html">HagiiZ</a>
+  <span class="head-tag">東北大学発「科学×防災」社会実装チーム</span>
+  <a class="about-btn" data-about href="https://www.hagiiz.com/" target="_blank" rel="noopener">HagiiZについて</a>
+  <a class="btn btn--support btn--sm" data-support="header" href="support.html">応援する</a>
+</header>
+
+<main>
+
+  <!-- ① フック：さわれる模型 -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="sticker">まず、雨を降らせてみてください</p>
+        <h1 id="hero-title" class="hero-title">雨を降らせると、<br>他人事が<br>自分事になる。</h1>
+        <p class="hero-lead note">私たちが手づくりした洪水の模型で、本当に起きたことです。</p>
+      </div>
+
+      <div class="model-wrap">
+        <div class="model" id="model">
+          <canvas id="model-canvas" role="img" aria-label="洪水流域模型。左に山、真ん中に川と堤防、右に町。雨が降ると川の水位が上がり、堤防を越えると町に水が流れ込む。"></canvas>
+        </div>
+        <p class="model-caption" id="model-caption" aria-live="polite"></p>
+        <div class="model-actions">
+          <button class="btn btn--pour" id="model-btn" type="button">押して、雨を降らせる</button>
+          <button class="btn-text" id="model-reset" type="button" hidden>最初から</button>
+        </div>
+        <div class="model-cta" id="model-cta" hidden>
+          <p class="model-cta-t">この「自分事になる瞬間」を、<br>つくり続けたい。</p>
+          <a class="btn btn--sub" href="#why">なぜ、つくるのか</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <span data-dock-after aria-hidden="true"></span>
+
+  <!-- ② いちばん大きな話：なぜ -->
+  <section class="why" id="why" aria-labelledby="why-title">
+    <div class="why-inner">
+      <div class="why-col">
+        <h2 class="why-big" id="why-title">大事なことほど、<br>関心がある人にしか<br>届かない。</h2>
+        <ul class="why-facts note">
+          <li>防災訓練に来るのは、もともと備えている人。</li>
+          <li>科学イベントに来るのは、もともと科学が好きな子。</li>
+          <li>土木の仕事は、何も起きなかった日ほど知られない。</li>
+        </ul>
+      </div>
+      <div class="why-col why-col--a">
+        <p class="why-big why-big--turn">だから、関心がなくても<br>始まる入口をつくる。</p>
+        <p class="why-answer"><span>それが、</span><span class="why-play">遊び</span><span>です。</span></p>
+        <div class="why-proof">
+          <p class="note">じょうろで模型に雨を降らせてもらうと、言われる前に、自分から堤防の置き方を試しはじめる。</p>
+          <p class="note">夢中で遊んだボードゲームのテーマが「実は放射線でした」と明かすと、親子の目の色が変わる。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 3つの視点 -->
+  <section class="doors" id="doors" aria-labelledby="doors-title">
+    <div class="wrap">
+      <h2 class="sec-title" id="doors-title">この話を、3つの視点で<br class="sp">書きました。</h2>
+      <p class="note doors-lead">あなたに近い分野から、読んでください。<br>忙しい人は<b class="fast-word">⚡倍速モード</b>で、要点だけ読めます。</p>
+
+      <div class="doors-grid">
+        <a class="door" data-layer="science" href="science.html">
+          <div class="door-img" data-slot="top/door-science" data-alt="サイエンスの物語"></div>
+          <div class="door-body">
+            <span class="door-pill">教育・科学に携わる方へ</span>
+            <span class="door-title">いろんなかたちの好奇心が、光る場をつくりたい</span>
+            <span class="door-meta">約6分／倍速なら約2分</span>
+          </div>
+        </a>
+
+        <a class="door" data-layer="bosai" href="bosai.html">
+          <div class="door-img" data-slot="top/door-bosai" data-alt="防災の物語"></div>
+          <div class="door-body">
+            <span class="door-pill">防災に携わる方へ</span>
+            <span class="door-title">防災に関心がない人にこそ、届いてほしい</span>
+            <span class="door-meta">約5分／倍速なら約2分</span>
+          </div>
+        </a>
+
+        <a class="door" data-layer="doboku" href="doboku.html" data-lock="doboku">
+          <div class="door-img" data-slot="top/door-doboku" data-alt="土木の物語"></div>
+          <div class="door-body">
+            <span class="door-pill">土木・インフラに携わる方へ</span>
+            <span class="door-title">守られた日常が、誰かの仕事の結果だと知られてほしい</span>
+            <span class="door-meta">約7分／倍速なら約3分</span>
+          </div>
+          <span class="door-lock" aria-hidden="true"><span class="door-lock-t">Coming soon</span><span class="door-lock-d">目標達成で公開</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 私たちがつくるもの -->
+  <section class="things" aria-labelledby="things-title">
+    <div class="wrap">
+      <h2 class="sec-title" id="things-title">遊びと対話で、<br class="sp">4つの場をつくります</h2>
+      <ol class="things-grid">
+        <li class="thing">
+          <div class="thing-img" data-slot="top/thing-boardgame" data-alt="ボードゲームで遊ぶ親子"></div>
+          <span class="thing-where">食卓に</span>
+          <h3 class="thing-title">ボードゲーム</h3>
+          <p class="note">遊びきったあとに、テーマを種明かし。知識を押しつけない設計で、放射線を身近なものにたとえた3作を開発中です。</p>
+        </li>
+        <li class="thing">
+          <div class="thing-img" data-slot="top/thing-class" data-alt="高校での出前授業"></div>
+          <span class="thing-where">教室に</span>
+          <h3 class="thing-title">出前授業</h3>
+          <p class="note">数年前まで同じ教室にいた博士学生が、進路も失敗も研究のたのしさも、ありのまま話します。</p>
+        </li>
+        <li class="thing">
+          <div class="thing-img" data-slot="top/thing-escape" data-alt="脱出ゲーム教材"></div>
+          <span class="thing-where">探究に</span>
+          <h3 class="thing-title">脱出ゲーム</h3>
+          <p class="note">「結論ありきのデータ集め」のような探究の失敗を、あえて体験して抜け出す謎解き教材です。</p>
+        </li>
+        <li class="thing">
+          <div class="thing-img" data-slot="top/thing-cafe" data-alt="ゲストハウスのサイエンスカフェ"></div>
+          <span class="thing-where">旅先に</span>
+          <h3 class="thing-title">サイエンスカフェ</h3>
+          <p class="note">ゲストハウスの食卓で、地元の人と旅人が、科学を「生活を支える営み」として語り合います。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ⑤ 私たちについて -->
+  <section class="stats" aria-labelledby="stats-title">
+    <div class="wrap">
+      <h2 class="stats-title" id="stats-title">HagiiZは、東北大学の博士学生を中心に、<br>専攻も学年もばらばらの33人です。</h2>
+      <ul class="stats-list">
+        <li><span class="stats-num" data-count="300" data-suffix="">300</span><span class="stats-unit">人以上</span><span class="stats-label">の親子が、放射線のボードゲームで遊んだ</span></li>
+        <li><span class="stats-num" data-count="10" data-suffix="">10</span><span class="stats-unit">件</span><span class="stats-label">学会発表（査読あり論文も）</span></li>
+        <li><span class="stats-num" data-count="2" data-suffix="">2</span><span class="stats-unit">年連続</span><span class="stats-label">防災科研の一般公開に出展</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ⑥ ひとつだけのお願い -->
+  <section class="final" aria-labelledby="final-title">
+    <div class="wrap final-inner">
+      <h2 class="final-title" id="final-title">この挑戦を、<br>一緒に。</h2>
+      <p class="note final-lead">東北大学が主催し、選考を通った企画だけが挑戦できる「ともプロ！2026」に、HagiiZのプロジェクトのひとつとして挑みます。</p>
+      <div class="btn-row">
+        <a class="btn btn--support btn--lg" data-support="final" href="support.html">応援する</a>
+      </div>
+      <div id="share"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <ul>
+    <li><a href="https://www.hagiiz.com/" target="_blank" rel="noopener">HagiiZ 公式サイト</a></li>
+    <li><a href="https://note.com/hagiiz_kaisetsu" target="_blank" rel="noopener">解説しますっ！（note）</a></li>
+    <li><a href="https://www.instagram.com/hagiiz_kaisetsu/" target="_blank" rel="noopener">解説しますっ！（Instagram）</a></li>
+    <li><a href="https://hagiiz-project.github.io/resilience-for-ladies-HP/" target="_blank" rel="noopener">ぼうさい女子会</a></li>
+    <li><a href="https://u35-bosai-zemi.github.io/u35-bosai-web/" target="_blank" rel="noopener">U35防災ゼミ</a></li>
+  </ul>
+  <p>© HagiiZ</p>
+</footer>
+
+<!-- スマホ：最初の画面を過ぎると出る -->
+
+<script src="assets/js/config.js?v=2026-09-25b"></script>
+<script src="assets/js/common.js?v=2026-09-25b"></script>
+<script src="assets/js/top.js?v=2026-09-25b"></script>
+<script src="assets/js/hero.js?v=2026-09-25b"></script>
+<script>
+/* 更新チェック：HTMLだけ新しく、assets / content フォルダが古いままだと、ここで気づけるようにする */
+(function () {
+  var want = "2026-09-25b", bad = [];
+  if (!window.SITE || window.SITE.BUILD !== want) bad.push("assets/js/config.js");
+  if (!window.HZ || window.HZ.BUILD !== want) bad.push("assets/js/common.js");
+  var css = getComputedStyle(document.documentElement).getPropertyValue("--build").replace(/["'\s]/g, "");
+  if (css !== want) bad.push("assets/css/style.css");
+  if (document.querySelector('script[src*="content/"]') && window.CONTENT_BUILD !== want) bad.push("content/");
+  if (!bad.length) return;
+  var d = document.createElement("div");
+  d.setAttribute("role", "alert");
+  d.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:9999;padding:14px 18px;background:#B00020;color:#fff;font:700 15px/1.6 sans-serif";
+  d.textContent = "更新が途中です。次のファイルが古いままです：" + bad.join("、") + "。ZIPの中身を、フォルダごとアップロードしてください。";
+  document.body.appendChild(d);
+})();
+</script>
+</body>
+</html>

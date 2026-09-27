@@ -129,7 +129,9 @@
 
 ## 写真の置き場所 一覧（最新版）
 
-写真がまだ無い枠は「PHOTO」と表示されます。ファイルを置くと、その枠に自動で入ります。どの枠がどのファイル名かは、URLの末尾に `?draft=1` を付けると画面上に表示されます。
+写真がまだ無い枠は「PHOTO」と表示されます。ファイルを置くと、その枠に自動で入ります。URLの末尾に `?draft=1` を付けると、画面上にもファイル名が出ます。
+
+「積み重ねてきたもの」の文章とリンクは `content/works.js` にまとめてあり、3つの物語で共通です。
 
 ### 科学（science.html）
 
@@ -149,7 +151,8 @@
 | 実績「手作り巨大洪水流域模型（サイエンス・デイ出展）」の右半分 | `images/science/works-2.jpg` |
 | 実績「教材プラットフォーム「プリズム(Prism)」」の右半分 | `images/science/works-3.jpg` |
 | 実績「Tohoku TikTokとの高校出前授業」の右半分 | `images/science/works-4.jpg` |
-| 実績「防災科学技術研究所との連携と、査読あり論文・学会発表10件」の右半分 | `images/science/works-5.jpg` |
+| 実績「防災科学技術研究所との連携（一般公開へ2年連続出展）」の右半分 | （リンク先のプレビューを表示。写真は不要） |
+| 実績「査読あり論文の執筆と、学会発表10件」の右半分 | `images/science/works-6.jpg` |
 | 今回の挑戦「科学思考をバグらせるボードゲーム（はなってバリア）」の下 | `images/science/plan-1.jpg` |
 | 今回の挑戦「高校への出前授業」の下 | `images/science/plan-2.jpg` |
 | 今回の挑戦「探究の失敗を疑似体験する「脱出ゲーム」教材」の下 | `images/science/plan-3.jpg` |
@@ -165,14 +168,10 @@
 | 場面 02 | `images/bosai/02.jpg` |
 | 「はじめに」 | `images/bosai/03.jpg` |
 | 「研究が社会に届かなかった」 | `images/bosai/04.jpg` |
-| 場面 05 | `images/bosai/05.jpg` |
-| 場面 06 | `images/bosai/06.jpg` |
-| 「この壁は、私たちだけのものではないはず」 | `images/bosai/07.jpg` |
 | 場面 08 | `images/bosai/08.jpg` |
 | 「私たちが見つけた、ひとつの鍵」 | `images/bosai/09.jpg` |
 | 場面 10 | `images/bosai/10.jpg` |
-| 場面 11 | `images/bosai/11.jpg` |
-| 実績「防災科学技術研究所との連携（一般公開へ2年連続出展）」の右半分 | `images/bosai/works-1.jpg` |
+| 実績「防災科学技術研究所との連携（一般公開へ2年連続出展）」の右半分 | （リンク先のプレビューを表示。写真は不要） |
 | 実績「査読あり論文の執筆と、学会発表10件」の右半分 | `images/bosai/works-2.jpg` |
 | 実績「手作り巨大洪水流域模型」の右半分 | `images/bosai/works-3.jpg` |
 | 実績「「ぼうさい女子会」の社会インフラ化」の右半分 | `images/bosai/works-4.jpg` |
@@ -202,7 +201,7 @@
 | 場面 11 | `images/doboku/11.jpg` |
 | 「担い手不足は、待遇の問題だけではない」 | `images/doboku/12.jpg` |
 | 場面 13 | `images/doboku/13.jpg` |
-| 実績「防災科学技術研究所との連携（一般公開へ2年連続出展）」の右半分 | `images/doboku/works-1.jpg` |
+| 実績「防災科学技術研究所との連携（一般公開へ2年連続出展）」の右半分 | （リンク先のプレビューを表示。写真は不要） |
 | 実績「査読あり論文の執筆と、学会発表10件」の右半分 | `images/doboku/works-2.jpg` |
 | 実績「手作り巨大洪水流域模型」の右半分 | `images/doboku/works-3.jpg` |
 | 実績「高校への出前授業」の右半分 | `images/doboku/works-4.jpg` |
@@ -214,3 +213,9 @@
 | 「記録されなかった時間に、名前を刻みます」 | `images/doboku/20.jpg` |
 | 「いちばん伝えたいこと」 | `images/doboku/22.jpg` |
 | 「達成したら、こうなる」の背景（任意。無ければイラスト） | `images/doboku/win.jpg` |
+
+### 共通
+
+| 場所 | ファイル名 |
+|---|---|
+| 東北大学ニュースのプレビュー画像（任意。置かない場合は東北大学のサイトの画像を表示） | `images/preview/tohoku-news.jpg` |

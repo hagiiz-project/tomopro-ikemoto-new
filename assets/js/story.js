@@ -2,7 +2,6 @@
    物語ページ（縦に読む）
    ・content/*.js の場面を上から順に描く
    ・段落全体が **…** の行は「主張」（太いゴシック）、それ以外は「説明」（手書き体）
-   ・倍速モード：主張と見出しだけを残して、約2分で読めるようにする
    ・上のバー：場面ごとの読んだ量（ストーリーズ風）と、のこり時間
    ・途中と最後に、支援の入口
    ========================================================= */
@@ -59,26 +58,58 @@
 
   // layout "cards"：縦長のカードを横に並べる（今回やること）
   // layout "rows" ：横長の箱。左に説明、右に写真（これまでの実績）
+  // content/works.js の共通データを { ref: "lab" } で呼び出す（物語ごとに title などを上書き可）
+  function resolve(it) {
+    var base = (it.ref && window.WORKS && window.WORKS[it.ref]) || {};
+    var out = Object.assign({}, base, it);
+    var links = out.links || (out.link && out.link.url ? [out.link] : []);
+    out.links = links.filter(function (l) { return l && l.url; });
+    return out;
+  }
+
+  function previewHTML(pv) {
+    var img = pv.image || pv.imageRemote;
+    var alt = pv.imageRemote && pv.image ? pv.imageRemote : "";
+    return '<div class="item-preview">' +
+      (img ? '<div class="pv-img"><img src="' + HZ.escapeHTML(img) + '" alt="" loading="lazy" decoding="async"' +
+        (alt ? ' data-alt-src="' + HZ.escapeHTML(alt) + '"' : "") +
+        ' onerror="if(this.dataset.altSrc&&this.src.indexOf(this.dataset.altSrc)<0){this.src=this.dataset.altSrc}else{this.parentNode.classList.add(\'is-failed\')}"></div>' : "") +
+      '<div class="pv-meta"><span class="pv-site">' + HZ.escapeHTML(pv.site || "") + "</span>" +
+      '<span class="pv-title">' + HZ.escapeHTML(pv.title || "") + "</span>" +
+      (pv.date ? '<span class="pv-date">' + HZ.escapeHTML(pv.date) + "</span>" : "") + "</div></div>";
+  }
+
+  // layout "cards"：縦長のカードを横に並べる（今回やること）
+  // layout "rows" ：横長の箱。左に説明、右に写真（これまでの実績）。リンクがあれば箱全体がリンク
   function itemsHTML(items, stat, layout) {
     var cls = layout === "cards" ? "items items--cards" : layout === "rows" ? "items items--rows" : "items";
-    return '<ul class="' + cls + '">' + items.map(function (it, i) {
+    return '<ul class="' + cls + '">' + items.map(function (raw, i) {
+      var it = resolve(raw);
       var text = clean(it.text);
       stat.all += plainLen(it.title) + plainLen(text);
       stat.fast += plainLen(it.title);
       stat.claims += 1;
-      var link = "";
-      if (it.link && it.link.url) {
-        link = '<a class="item-link" href="' + HZ.escapeHTML(it.link.url) + '" target="_blank" rel="noopener">' +
-          HZ.escapeHTML(it.link.text) + "</a>";
-      }
-      var body = '<h3 class="item-title">' + HZ.fmt(it.title) + "</h3>" +
-        (text ? '<p class="note item-text">' + HZ.fmt(text) + "</p>" : "") + link;
+      var titleText = HZ.fmt(it.title);
+      var main = it.links[0];
+      var linksHTML = it.links.length ? '<span class="item-links">' + it.links.map(function (l) {
+        return '<a class="item-link" href="' + HZ.escapeHTML(l.url) + '" target="_blank" rel="noopener">' + HZ.escapeHTML(l.text) + "</a>";
+      }).join("") + "</span>" : "";
+
       if (layout === "rows") {
-        var key = it.img || ("works-" + (i + 1));
-        return '<li class="item item--row"><div class="item-body">' + body + "</div>" +
-          '<figure class="item-fig" data-hide-empty data-work="' + HZ.escapeHTML(key) + '" data-alt="' +
-          HZ.escapeHTML(String(it.title).replace(/\*\*/g, "")) + '"></figure></li>';
+        var titleHTML = main
+          ? '<a class="item-main" href="' + HZ.escapeHTML(main.url) + '" target="_blank" rel="noopener">' + titleText + "</a>"
+          : titleText;
+        var right = it.preview
+          ? '<div class="item-fig item-fig--preview">' + previewHTML(it.preview) + "</div>"
+          : '<figure class="item-fig" data-hide-empty data-work="' + HZ.escapeHTML(it.img || ("works-" + (i + 1))) + '" data-alt="' +
+            HZ.escapeHTML(String(it.title).replace(/\*\*/g, "")) + '"></figure>';
+        return '<li class="item item--row' + (main ? " is-link" : "") + '"><div class="item-body">' +
+          '<h3 class="item-title">' + titleHTML + "</h3>" +
+          (text ? '<p class="note item-text">' + HZ.fmt(text) + "</p>" : "") + linksHTML + "</div>" + right + "</li>";
       }
+
+      var body = '<h3 class="item-title">' + titleText + "</h3>" +
+        (text ? '<p class="note item-text">' + HZ.fmt(text) + "</p>" : "") + linksHTML;
       if (layout === "cards") {
         var pkey = it.img || ("plan-" + (i + 1));
         return '<li class="item item--card"><div class="item-body">' + body + "</div>" +
@@ -199,8 +230,7 @@
         '<h1 class="cover-title">' + HZ.fmt(STORY.title) + "</h1>" +
         (tl ? '<div class="tldr"><p class="tldr-h">3行でいうと</p><ol>' + tl + "</ol></div>" : "") +
         '<div class="cover-actions">' +
-          '<button class="btn btn--fast" type="button" data-fast-on>⚡ 倍速で読む（約' + total.fast + "分）</button>" +
-          '<a class="btn btn--sub" href="#s-1" data-read>全部読む（約' + total.all + "分）</a>" +
+          '<a class="btn btn--sub" href="#s-1" data-read>読みはじめる（約' + total.all + "分）</a>" +
         "</div>" +
       "</div>";
     var fig = document.createElement("figure");
@@ -400,8 +430,7 @@
       a.addEventListener("click", function () { if (fast) setFast(false, false); });
     });
 
-    if (/[?&]fast=1/.test(location.search)) setFast(true, false);
-
+  
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     window.addEventListener("load", onScroll);

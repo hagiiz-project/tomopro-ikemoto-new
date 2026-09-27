@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2026-09-25c">
+<link rel="stylesheet" href="assets/css/style.css?v=2026-09-25d">
 </head>
 <body class="story" data-layer="doboku">
 
@@ -26,7 +26,6 @@
   <a class="logo" href="index.html">HagiiZ</a>
   <a class="about-btn" data-about href="https://www.hagiiz.com/" target="_blank" rel="noopener">HagiiZについて</a>
   <span class="bar-left" aria-live="off"></span>
-  <button class="fast-toggle" type="button" aria-pressed="false">⚡ 倍速</button>
   <a class="btn btn--support btn--sm" data-support="header" href="support.html">応援する</a>
   <div class="segs" aria-hidden="true"></div>
 </header>
@@ -36,14 +35,15 @@
 </main>
 
 
-<script src="assets/js/config.js?v=2026-09-25c"></script>
-<script src="content/doboku.js?v=2026-09-25c"></script>
-<script src="assets/js/common.js?v=2026-09-25c"></script>
-<script src="assets/js/story.js?v=2026-09-25c"></script>
+<script src="assets/js/config.js?v=2026-09-25d"></script>
+<script src="content/works.js?v=2026-09-25d"></script>
+<script src="content/doboku.js?v=2026-09-25d"></script>
+<script src="assets/js/common.js?v=2026-09-25d"></script>
+<script src="assets/js/story.js?v=2026-09-25d"></script>
 <script>
 /* 更新チェック：HTMLだけ新しく、assets / content フォルダが古いままだと、ここで気づけるようにする */
 (function () {
-  var want = "2026-09-25c", bad = [];
+  var want = "2026-09-25d", bad = [];
   if (!window.SITE || window.SITE.BUILD !== want) bad.push("assets/js/config.js");
   if (!window.HZ || window.HZ.BUILD !== want) bad.push("assets/js/common.js");
   var css = getComputedStyle(document.documentElement).getPropertyValue("--build").replace(/["'\s]/g, "");

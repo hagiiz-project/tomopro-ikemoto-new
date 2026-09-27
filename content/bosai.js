@@ -121,9 +121,7 @@ window.STORY = {
     { id: "13", layout: "rows", kind: "list", start: 4,
       imageNote: "ぼうさい女子会・U35防災ゼミ・プリズムの活動",
       items: [
-        { title: "「ぼうさい女子会」の社会インフラ化",
-          text: "避難生活における女性の尊厳と防犯の問題は、長く放置されてきました。①匿名で相談できる相談窓口アプリと②守る地図を開発・運用しています。",
-          link: { text: "ぼうさい女子会 公式HP", url: "https://hagiiz-project.github.io/resilience-for-ladies-HP/" } },
+        { ref: "joshikai" },
         { ref: "u35" },
         { ref: "prism" }
       ] },
@@ -177,4 +175,4 @@ window.STORY = {
   ]
 };
 
-window.CONTENT_BUILD = "2026-09-25d"; // 更新の確認用（触らない）
+window.CONTENT_BUILD = "2026-09-27b"; // 更新の確認用（触らない）

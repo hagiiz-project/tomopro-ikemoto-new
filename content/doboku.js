@@ -215,4 +215,4 @@ window.STORY = {
   ]
 };
 
-window.CONTENT_BUILD = "2026-09-25d"; // 更新の確認用（触らない）
+window.CONTENT_BUILD = "2026-09-27b"; // 更新の確認用（触らない）

@@ -55,7 +55,7 @@
 
   /* ---------- 画像 ---------- */
 
-  var EXTS = ["jpg", "png", "webp", "jpeg"];
+  var EXTS = ["jpg", "png", "webp", "jpeg", "JPG", "PNG", "JPEG"]; // iPhone の「.JPG」（大文字）もそのまま使える
   if (SITE.IMAGE_EXT) {
     EXTS = [SITE.IMAGE_EXT].concat(EXTS.filter(function (e) { return e !== SITE.IMAGE_EXT; }));
   }
@@ -74,7 +74,15 @@
     if (DRAFT) {
       var label = document.createElement("span");
       label.className = "img-label";
-      label.innerHTML = "<code>images/" + escapeHTML(key) + ".jpg</code> を置くと表示されます";
+      var folder = "images/" + key.split("/").slice(0, -1).join("/");
+      var file = key.split("/").pop() + ".jpg";
+      var gh = SITE.GITHUB_REPO ? "https://github.com/" + SITE.GITHUB_REPO : "";
+      var br = SITE.GITHUB_BRANCH || "main";
+      label.innerHTML = '<span class="img-label-file">' + escapeHTML(file) + "</span>" +
+        '<span class="img-label-path">フォルダ：' + escapeHTML(folder) + "</span>" +
+        (gh ? '<span class="img-label-btns">' +
+          '<a href="' + gh + "/upload/" + br + "/" + folder + '" target="_blank" rel="noopener">このフォルダに写真を入れる</a>' +
+          '<button type="button" data-copy="' + escapeHTML(file) + '">ファイル名をコピー</button></span>' : "");
       el.appendChild(label);
     }
     return el;
@@ -476,11 +484,21 @@
     if (progressDone) renderGauges(root);
   }
 
+  // ?draft=1 の「ファイル名をコピー」
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-copy]");
+    if (!b || !navigator.clipboard) return;
+    navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function () {
+      var t = b.textContent; b.textContent = "コピーしました";
+      setTimeout(function () { b.textContent = t; }, 1500);
+    });
+  });
+
   initAnalytics();
   loadProgress();
 
   window.HZ = {
-    BUILD: "2026-09-25d",
+    BUILD: "2026-09-27b",
     DRAFT: DRAFT,
     REDUCE: REDUCE,
     fmt: fmt,

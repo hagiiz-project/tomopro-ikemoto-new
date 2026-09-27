@@ -4,7 +4,7 @@
    ========================================================= */
 
 window.SITE = {
-  BUILD: "2026-09-25d",   // 更新の確認用（触らない）
+  BUILD: "2026-09-27b",   // 更新の確認用（触らない）
 
   /* ---------- 制作中 / 公開 ---------- */
   // true：制作中。画像の置き場所と〔OO〕の未記入箇所が黄色で見えます。
@@ -21,6 +21,11 @@ window.SITE = {
   DONATE_PAGE_NO: "No.09",
   DONATE_PAGE_TITLE: "科学の楽しさを、子どもから大人まで。東北の博士学生がつくる遊びと対話",
   DONATE_PAGE_OWNER: "サイエンスイベント同好会HagiiZ",
+
+  // 写真を入れる GitHub の場所（?draft=1 の画面から、そのフォルダを直接開けるようにする）
+  GITHUB_REPO: "hagiiz-project/tomopro-ikemoto",
+  GITHUB_BRANCH: "main",
+  SITE_URL: "https://hagiiz-project.github.io/tomopro-ikemoto/",
 
   // ヘッダーの「HagiiZについて」の飛び先
   ABOUT_URL: "https://www.hagiiz.com/",

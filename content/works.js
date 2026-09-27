@@ -17,6 +17,7 @@ window.WORKS = {
       site: "東北大学 ニュース",
       title: "防災科学技術研究所一般公開に現役博士学生が出展 〜災害科学・防災を子供たちへ",
       date: "2026年4月22日",
+      color: "#6E2A8C",
       // images/preview/tohoku-news.jpg を置くとそちらを優先。無ければ東北大学のサイトの画像を表示
       image: "images/preview/tohoku-news.jpg",
       imageRemote: "https://www.tohoku.ac.jp/japanese/newimg/newsimg/news20260422_syde_ogp.jpg"
@@ -35,16 +36,40 @@ window.WORKS = {
     links: [{ text: "模型のページを見る", url: "https://www.hagiiz.com/projects/model/" }]
   },
 
+  joshikai: {
+    title: "「ぼうさい女子会」の社会インフラ化",
+    text: "避難生活における女性の尊厳と防犯の問題は、長く放置されてきました。①匿名で相談できる相談窓口アプリと②守る地図を開発・運用しています。",
+    links: [{ text: "ぼうさい女子会 公式HP", url: "https://hagiiz-project.github.io/resilience-for-ladies-HP/" }],
+    preview: {
+      site: "ぼうさい女子会",
+      title: "すべての女性の尊厳を守る、新しい社会の仕組みを共に。",
+      image: "assets/img/preview-joshikai.jpg",
+      color: "#C2548F"
+    }
+  },
+
   u35: {
     title: "「U35防災ゼミ」の企画・運営",
     text: "前防災担当大臣とのゼミから結成された全国組織です。応援コメントをくださっている防災科学技術研究所の上田啓瑚さんを筆頭に、学生、企業、研究機関、NPOが所属しています。公式サイト構築とインタビュー企画の運営を主導しています。",
-    links: [{ text: "U35防災ゼミ 公式サイト", url: "https://u35-bosai-zemi.github.io/u35-bosai-web/" }]
+    links: [{ text: "U35防災ゼミ 公式サイト", url: "https://u35-bosai-zemi.github.io/u35-bosai-web/" }],
+    preview: {
+      site: "U35 防災ゼミ",
+      title: "若者視点で防災の未来をつくる",
+      image: "assets/img/preview-u35.jpg",
+      color: "#567A43"
+    }
   },
 
   prism: {
     title: "教材プラットフォーム「プリズム(Prism)」",
     text: "サイエンスコミュニケーションのプラットフォームの整備を目指しています。また、広く・いろんな人に紹介・利用・製作いただくため、サイエンスコミュニケーションツール・防災ツールをまとめたサイトを構築しています◎",
-    links: [{ text: "プリズムを見る", url: "https://hagiiz-project.github.io/prism/" }]
+    links: [{ text: "プリズムを見る", url: "https://hagiiz-project.github.io/prism/" }],
+    preview: {
+      site: "プリズム",
+      title: "科学と出会う入り口",
+      image: "assets/img/preview-prism.jpg",
+      color: "#6B4FD8"
+    }
   },
 
   kaisetsu: {

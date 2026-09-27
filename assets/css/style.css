@@ -17,7 +17,7 @@
 }
 
 :root {
-  --build: "2026-09-25d";   /* 更新の確認用（触らない） */
+  --build: "2026-09-27b";   /* 更新の確認用（触らない） */
   color-scheme: light;
 
   --rose: #E24F93;
@@ -1570,7 +1570,7 @@ mark.todo {
 /* ---- 写真の無い場面は、文章を中央に ---- */
 .scene.no-fig .scene-text { grid-column: 1 / -1; width: 100%; margin: 0 auto; }
 .scene--cards .scene-text,
-.scene--rows .scene-text { max-width: 1120px; }
+.scene--rows .scene-text { max-width: 1180px; }
 .scene--cards .scene-text > p,
 .scene--rows .scene-text > p,
 .scene--cards .scene-title,
@@ -1843,3 +1843,71 @@ mark.todo {
 .pv-date { font-size: 12px; color: var(--ink-2); }
 @media (max-width: 759px) { .item-fig--preview { order: -1; border-top: 0; border-bottom: var(--line); } }
 .item-preview:has(.pv-img.is-failed) { justify-content: center; }
+
+/* ?draft=1：写真の置き場所の案内 */
+.img-label {
+  display: flex; flex-direction: column; gap: 4px;
+  left: 10px; right: 10px; bottom: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, .97);
+  border: 2px solid var(--ink);
+  border-left: 6px solid var(--accent);
+  border-radius: 10px;
+  z-index: 3;
+}
+.img-label-file { font-family: ui-monospace, Menlo, Consolas, monospace; font-weight: 700; font-size: 16px; color: var(--ink); }
+.img-label-path { font-size: 12px; color: var(--ink-2); font-family: ui-monospace, Menlo, Consolas, monospace; }
+.img-label-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.img-label-btns a, .img-label-btns button {
+  position: relative; z-index: 4;
+  font-family: var(--f-claim); font-weight: 900; font-size: 12px; line-height: 1;
+  padding: 7px 10px; border: 2px solid var(--ink); border-radius: 999px;
+  background: var(--sun); color: var(--ink); text-decoration: none; cursor: pointer;
+}
+.img-label-btns button { background: var(--white); }
+
+/* =========================================================
+   写真を切らずに、大きく見せる ／ 文章の大きさのバランス
+   ========================================================= */
+
+/* ② 写真が入ったら、枠の比率に合わせて切り抜かず、写真そのままの形で全体を見せる */
+.img-slot.has-img {
+  aspect-ratio: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  background: var(--white) !important;
+}
+.img-slot.has-img img { width: 100%; height: auto; object-fit: contain; }
+.item-fig:has(.img-slot.has-img) { min-height: 0 !important; display: flex; align-items: center; background: var(--white); }
+
+/* ② 写真の列を広げる（文章：写真 ＝ 1：1）*/
+.scene { max-width: 1240px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.scene:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.cover { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.cover-fig { max-width: 680px; width: 100%; }
+.flow > .scene--cta .scene-fig { max-width: 880px; }
+@media (max-width: 899px) { .cover { grid-template-columns: 1fr; } }
+@media (max-width: 859px) {
+  .scene, .scene:nth-child(even) { grid-template-columns: 1fr; }
+}
+
+/* ③ 物語の文章を一回り大きく。写真の無い場面は、中央の読みやすい幅でさらに大きく */
+.flow .note { font-size: clamp(17px, 1.3vw, 19px); line-height: 2; }
+.flow .claim { font-size: clamp(22px, 2.3vw, 30px); }
+.scene.no-fig:not(.scene--cards):not(.scene--rows) .scene-text,
+.scene-fig.is-gone + .scene-text {
+  max-width: 820px !important;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.scene.no-fig .note,
+.scene-fig.is-gone + .scene-text .note { font-size: clamp(18px, 1.45vw, 21px); }
+.scene.no-fig .claim,
+.scene-fig.is-gone + .scene-text .claim { font-size: clamp(24px, 2.6vw, 33px); }
+/* 写真の無い場面が続くところは、間を詰める */
+.scene.no-fig:not(.scene--cards):not(.scene--rows) { padding-top: clamp(40px, 5vw, 72px); }
+.items--rows .item-title { font-size: clamp(18px, 1.5vw, 21px); }
+.items--rows .item-text { font-size: clamp(16px, 1.2vw, 18px); line-height: 1.9; }
+.items--cards .item-title { font-size: clamp(17px, 1.4vw, 19px); }
+.items--cards .item-text { font-size: clamp(15px, 1.1vw, 16px); }

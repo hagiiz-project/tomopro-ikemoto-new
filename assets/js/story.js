@@ -74,7 +74,7 @@
       (img ? '<div class="pv-img"><img src="' + HZ.escapeHTML(img) + '" alt="" loading="lazy" decoding="async"' +
         (alt ? ' data-alt-src="' + HZ.escapeHTML(alt) + '"' : "") +
         ' onerror="if(this.dataset.altSrc&&this.src.indexOf(this.dataset.altSrc)<0){this.src=this.dataset.altSrc}else{this.parentNode.classList.add(\'is-failed\')}"></div>' : "") +
-      '<div class="pv-meta"><span class="pv-site">' + HZ.escapeHTML(pv.site || "") + "</span>" +
+      '<div class="pv-meta"><span class="pv-site"' + (pv.color ? ' style="background:' + HZ.escapeHTML(pv.color) + '"' : "") + ">" + HZ.escapeHTML(pv.site || "") + "</span>" +
       '<span class="pv-title">' + HZ.escapeHTML(pv.title || "") + "</span>" +
       (pv.date ? '<span class="pv-date">' + HZ.escapeHTML(pv.date) + "</span>" : "") + "</div></div>";
   }
@@ -83,8 +83,10 @@
   // layout "rows" ：横長の箱。左に説明、右に写真（これまでの実績）。リンクがあれば箱全体がリンク
   function itemsHTML(items, stat, layout) {
     var cls = layout === "cards" ? "items items--cards" : layout === "rows" ? "items items--rows" : "items";
+    var photoNo = 0; // 写真の番号は、プレビューを出す箱を飛ばして数える（works-1, works-2, …）
     return '<ul class="' + cls + '">' + items.map(function (raw, i) {
       var it = resolve(raw);
+      if (layout === "rows" && !it.preview) photoNo += 1;
       var text = clean(it.text);
       stat.all += plainLen(it.title) + plainLen(text);
       stat.fast += plainLen(it.title);
@@ -101,7 +103,7 @@
           : titleText;
         var right = it.preview
           ? '<div class="item-fig item-fig--preview">' + previewHTML(it.preview) + "</div>"
-          : '<figure class="item-fig" data-hide-empty data-work="' + HZ.escapeHTML(it.img || ("works-" + (i + 1))) + '" data-alt="' +
+          : '<figure class="item-fig" data-hide-empty data-work="' + HZ.escapeHTML(it.img || ("works-" + photoNo)) + '" data-alt="' +
             HZ.escapeHTML(String(it.title).replace(/\*\*/g, "")) + '"></figure>';
         return '<li class="item item--row' + (main ? " is-link" : "") + '"><div class="item-body">' +
           '<h3 class="item-title">' + titleHTML + "</h3>" +
@@ -204,7 +206,10 @@
       var fig = document.createElement("figure");
       fig.className = "scene-fig";
       fig.setAttribute("data-hide-empty", "");
-      fig.appendChild(HZ.imgSlot(layer + "/" + sc.id, sc.heading ? sc.heading.replace(/\*\*/g, "") : STORY.title));
+      var sceneSlot = HZ.imgSlot(layer + "/" + sc.id, sc.heading ? sc.heading.replace(/\*\*/g, "") : STORY.title);
+      // 挿絵がある場面：写真（images/…）が無ければ挿絵を表示。写真や完成版を置けばそちらが優先
+      if (sc.illust) sceneSlot.setAttribute("data-fallback", sc.illust);
+      fig.appendChild(sceneSlot);
       art.appendChild(fig);
     } else {
       art.classList.add("no-fig");

@@ -58,7 +58,8 @@ for (const f of ["science", "bosai", "doboku"]) {
     }
     if (sc.noImage) continue;
     let where;
-    if (sc.kind === "cover") where = "いちばん上（表紙）の右側";
+    if (sc.kind === "photo") where = "文章なしで、横いっぱいに表示する写真" + (sc.imageNote ? `（${strip(sc.imageNote)}）` : "");
+    else if (sc.kind === "cover") where = "いちばん上（表紙）の右側";
     else if (sc.kind === "cta") where = "「いちばん伝えたいこと」の上";
     else {
       const first = strip((sc.body || [])[0]).slice(0, 28);

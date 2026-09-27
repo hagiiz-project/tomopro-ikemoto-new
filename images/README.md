@@ -4,8 +4,8 @@
 
 | ページ | フォルダ | 枠の数 |
 |---|---|---|
-| 科学（教育・科学に携わる方へ） | [images/science](science) | 17 |
-| 防災（防災に携わる方へ） | [images/bosai](bosai) | 15 |
+| 科学（教育・科学に携わる方へ） | [images/science](science) | 18 |
+| 防災（防災に携わる方へ） | [images/bosai](bosai) | 18 |
 | 土木（土木・インフラに携わる方へ） | [images/doboku](doboku) | 24 |
 | トップページ・応援ページ | [images/top](top) | 8 |
 | SNS共有用 | [images/ogp](ogp) | 4 |

@@ -118,7 +118,7 @@ window.STORY = {
     { id: "12", layout: "rows", kind: "list", start: 3,
       imageNote: "出前授業・プリズムの教材",
       items: [
-        { ref: "prism" },
+        { ref: "prism", img: "works-3" },
         { ref: "tiktok", img: "works-4" },
         { ref: "lab" },
         { ref: "paper", img: "works-5" }
@@ -173,4 +173,4 @@ window.STORY = {
   ]
 };
 
-window.CONTENT_BUILD = "2026-09-27b"; // 更新の確認用（触らない）
+window.CONTENT_BUILD = "2026-09-27d"; // 更新の確認用（触らない）

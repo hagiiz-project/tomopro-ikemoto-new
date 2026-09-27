@@ -160,6 +160,16 @@
     art.id = kind === "stages" ? "support" : "s-" + idx;
     art.setAttribute("data-idx", idx);
 
+    // 写真だけの場面（文章なし、横いっぱい）
+    if (kind === "photo") {
+      var pf = document.createElement("figure");
+      pf.className = "scene-fig scene-fig--full";
+      pf.appendChild(HZ.imgSlot(layer + "/" + sc.id, sc.imageNote || STORY.title));
+      art.appendChild(pf);
+      art._stat = stat;
+      return art;
+    }
+
     var html = "";
     if (sc.heading) {
       stat.all += plainLen(sc.heading);

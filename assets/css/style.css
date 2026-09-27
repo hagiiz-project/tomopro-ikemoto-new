@@ -17,7 +17,7 @@
 }
 
 :root {
-  --build: "2026-09-27b";   /* 更新の確認用（触らない） */
+  --build: "2026-09-27d";   /* 更新の確認用（触らない） */
   color-scheme: light;
 
   --rose: #E24F93;
@@ -1911,3 +1911,57 @@ mark.todo {
 .items--rows .item-text { font-size: clamp(16px, 1.2vw, 18px); line-height: 1.9; }
 .items--cards .item-title { font-size: clamp(17px, 1.4vw, 19px); }
 .items--cards .item-text { font-size: clamp(15px, 1.1vw, 16px); }
+
+/* =========================================================
+   レイアウトの統一：文章はいつも左・同じ位置から、写真は右に大きく
+   ========================================================= */
+:root { --content-w: 1320px; }
+
+/* 文章の左端をすべての場面でそろえる */
+.scene { max-width: var(--content-w); }
+@media (min-width: 860px) {
+  .scene,
+  .scene:nth-child(even) { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .scene > .scene-text { order: 1; grid-column: 1; }
+  .scene > .scene-fig,
+  .scene:nth-child(even) > .scene-fig { order: 2; grid-column: 2; }
+}
+/* 写真の無い場面：左端は同じ位置のまま、読みやすい幅で */
+.scene.no-fig:not(.scene--cards):not(.scene--rows) .scene-text,
+.scene-fig.is-gone + .scene-text {
+  grid-column: 1 / -1 !important;
+  max-width: 860px !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.scene--cards .scene-text,
+.scene--rows .scene-text { grid-column: 1 / -1; max-width: none; margin: 0; }
+
+/* 表紙も、本文と同じ左端に */
+.cover {
+  padding-left: max(var(--pad-x), calc((100vw - var(--content-w)) / 2 + var(--pad-x)));
+  padding-right: max(var(--pad-x), calc((100vw - var(--content-w)) / 2 + var(--pad-x)));
+}
+@media (min-width: 900px) { .cover { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.cover-text { justify-self: start; max-width: none; }
+.cover-fig { max-width: none; justify-self: stretch; }
+
+/* 両端ぞろえ（行の右端もそろえる）。中央ぞろえの帯は除く */
+.flow .scene:not(.scene--cta):not(.scene--win) .scene-text p.note,
+.items .item-text,
+.tldr li {
+  text-align: justify;
+  text-justify: inter-character;
+}
+/* 大きな太字の一文は、字間が不自然に広がらないよう左ぞろえのまま */
+.flow .scene-text p.claim { text-align: left; }
+
+/* 実績の箱：写真側を少し広く */
+@media (min-width: 760px) {
+  .items--rows .item--row { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+}
+
+/* 写真だけの場面：横いっぱい */
+.scene--photo { display: block; }
+.scene--photo .scene-fig--full { position: static; max-width: 100%; margin: 0; }
+.scene--photo .img-slot:not(.has-img) { aspect-ratio: 16 / 9; height: auto; }

@@ -498,7 +498,7 @@
   loadProgress();
 
   window.HZ = {
-    BUILD: "2026-09-27b",
+    BUILD: "2026-09-27d",
     DRAFT: DRAFT,
     REDUCE: REDUCE,
     fmt: fmt,

@@ -17,7 +17,7 @@
 }
 
 :root {
-  --build: "2026-09-27d";   /* 更新の確認用（触らない） */
+  --build: "2026-09-27f";   /* 更新の確認用（触らない） */
   color-scheme: light;
 
   --rose: #E24F93;
@@ -1965,3 +1965,66 @@ mark.todo {
 .scene--photo { display: block; }
 .scene--photo .scene-fig--full { position: static; max-width: 100%; margin: 0; }
 .scene--photo .img-slot:not(.has-img) { aspect-ratio: 16 / 9; height: auto; }
+
+/* =========================================================
+   右下の「この挑戦を応援する」（全ページ・応援ページ以外）
+   ========================================================= */
+.fab-support {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right, 0px));
+  bottom: calc(18px + var(--safe-b));
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 0 24px 0 20px;
+  font-family: var(--f-claim);
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 1;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+  background: var(--rose-deep);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 5px 0 var(--ink), 0 10px 24px rgba(42, 20, 34, .25);
+  transition: transform .2s ease, opacity .2s ease, box-shadow .12s ease;
+  animation: fab-in .5s cubic-bezier(.2, 1.4, .4, 1) .6s both;
+}
+.fab-support:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--ink), 0 14px 28px rgba(42, 20, 34, .28); }
+.fab-support:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink); }
+.fab-support svg { color: var(--sun); flex: none; }
+.fab-support .fab-short { display: none; }
+.fab-support.is-hidden { opacity: 0; transform: translateY(24px); pointer-events: none; }
+@keyframes fab-in { from { opacity: 0; transform: translateY(30px) scale(.9); } }
+@media (max-width: 559px) {
+  .fab-support { min-height: 50px; padding: 0 18px 0 14px; font-size: 15px; right: 12px; bottom: calc(12px + var(--safe-b)); }
+  .fab-support .fab-long { display: none; }
+  .fab-support .fab-short { display: inline; }
+}
+@media (prefers-reduced-motion: reduce) { .fab-support { animation: none; transition: none; } }
+/* 右下のボタンで、ページ最後の文字が隠れないように */
+.site-foot { padding-bottom: calc(96px + var(--safe-b)) !important; }
+
+/* =========================================================
+   改行の位置：意味の切れ目で折り返す／写真の無い場面は右側まで使う
+   ========================================================= */
+/* 太字の一文・見出し：文節の切れ目で改行（左ぞろえなので字間は広がらない） */
+.flow .claim,
+.flow .scene-title,
+.items .item-title {
+  word-break: auto-phrase;
+  text-wrap: pretty;
+  line-break: strict;
+}
+/* 本文（両端ぞろえ）：行をいっぱいまで使い、最後の行に1〜2文字だけ残らないように */
+.flow .note,
+.items .item-text {
+  word-break: normal;
+  text-wrap: pretty;
+  line-break: strict;
+}
+.scene.no-fig:not(.scene--cards):not(.scene--rows) .scene-text,
+.scene-fig.is-gone + .scene-text { max-width: none !important; }

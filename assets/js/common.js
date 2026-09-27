@@ -476,7 +476,31 @@
       '<button type="button" class="chip-btn" data-share="copy">リンクをコピー</button></div>';
   }
 
+  /* ---------- 右下にいつも出ている「この挑戦を応援する」 ----------
+     読んでいる途中で「応援しよう」と思った人が、すぐ押せるように。
+     同じボタンが画面の中にあるとき（ページ末尾の大きなボタンなど）は、重ならないよう引っ込める。
+     応援ページ（support.html）自身では出さない。 */
+  function floatingSupport() {
+    if (document.body.classList.contains("support-page") || document.querySelector(".fab-support")) return;
+    var a = document.createElement("a");
+    a.className = "fab-support";
+    a.setAttribute("data-support", "floating");
+    a.href = "support.html";
+    a.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.3 1 4.1 2.3h3C14.3 6 15.6 5 17.6 5 21 5 23.1 8.4 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>' +
+      '<span class="fab-long">この挑戦を応援する</span><span class="fab-short">応援する</span>';
+    document.body.appendChild(a);
+    if (!("IntersectionObserver" in window)) return;
+    var targets = document.querySelectorAll(".final, .closing, .flow > .scene--cta .btn-row");
+    var seen = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+      a.classList.toggle("is-hidden", seen.size > 0);
+    });
+    targets.forEach(function (t) { io.observe(t); });
+  }
+
   function finish(root) {
+    floatingSupport();
     applyLinks(root);
     applyCountdown(root);
     bindShare(root);
@@ -498,7 +522,7 @@
   loadProgress();
 
   window.HZ = {
-    BUILD: "2026-09-27d",
+    BUILD: "2026-09-27f",
     DRAFT: DRAFT,
     REDUCE: REDUCE,
     fmt: fmt,

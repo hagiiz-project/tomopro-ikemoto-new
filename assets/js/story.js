@@ -334,8 +334,8 @@
         var brk = document.createElement("div");
         brk.className = "chapter-break";
         brk.innerHTML = '<span class="chapter-no">STORY</span>' +
-          '<p class="chapter-t">なぜ、この挑戦をするのか。</p>' +
-          '<p class="chapter-d">書きつづりました。</p>';
+          '<p class="chapter-t">ここから、物語です。</p>' +
+          '<p class="chapter-d">なぜ、この挑戦をするのか。代表の' + HZ.escapeHTML(SITE.REP_NAME || "") + 'が、自分の言葉で書きました。</p>';
         flow.appendChild(brk);
       }
     });
